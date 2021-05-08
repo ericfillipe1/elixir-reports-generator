@@ -11,6 +11,13 @@ defmodule ReportsGenerator do
     "prato_feito",
     "sushi"
   ]
+
+
+  @options [
+    "users",
+    "foods",
+  ]
+
   def build(filename) do
     "reports/#{filename}"
     |> Parser.from_file_name()
@@ -23,9 +30,19 @@ defmodule ReportsGenerator do
     %{reports | "users" => users, "foods" => foods}
   end
 
-  def fetch_hight_cost(report) do
-    report
-    |> Enum.max_by(fn {_key, value} -> value end)
+  def fetch_hight_cost(report , option) when option in @options do
+    [
+      :ok,
+      report[option]
+        |> Enum.max_by(fn {_key, value} -> value end)
+    ]
+  end
+
+  def fetch_hight_cost(_report , _option)  do
+    [
+      :error,
+      "invalid option"
+    ]
   end
 
   def report_acc() do
