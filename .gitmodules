@@ -1,9 +1,0 @@
-[submodule "elixir-list-length"]
-	path = elixir-list-length
-	url = https://github.com/ericfillipe1/elixir-list-length.git
-[submodule "elixir-sum-list"]
-	path = elixir-sum-list
-	url = https://github.com/ericfillipe1/elixir-sum-list.git
-[submodule "elixir-list-filter"]
-	path = elixir-list-filter
-	url = https://github.com/ericfillipe1/elixir-list-filter.git
