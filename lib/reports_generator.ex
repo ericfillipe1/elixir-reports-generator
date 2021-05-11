@@ -23,11 +23,11 @@ defmodule ReportsGenerator do
     |> Enum.reduce(report_acc(), &sum_values(&1, &2))
   end
 
-  def build_from_files(filenames) when not is_list(filenames) do
+  def build_from_many(filenames) when not is_list(filenames) do
     {:error, "Please providers a list of strings"}
   end
 
-  def build_from_files(filenames) do
+  def build_from_many(filenames) do
     filenames
     |> Task.async_stream(&build/1)
     |> Enum.reduce(report_acc(), fn {:ok, result}, acc -> sum_reports(result, acc) end)
