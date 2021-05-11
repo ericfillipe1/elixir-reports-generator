@@ -1,13 +1,13 @@
 defmodule ReportsGenerator.Parser do
-  def from_file_name(filename) do
-    filename
+  def parser_file(filename) do
+    "reports/#{filename}"
     |> File.stream!()
     |> Stream.map(fn line ->
       parser_line(line)
     end)
   end
 
-  def parser_line(line) do
+  defp parser_line(line) do
     line
     |> String.trim()
     |> String.split(",")
