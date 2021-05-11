@@ -57,32 +57,41 @@ defmodule ReportsGenerator.ParserTest do
       assert response == expected_response
     end
   end
+
   describe "fetch_hight_cost/1" do
     test "when the option is 'user' , returns the user who spent the most " do
       # Setup
       file_name = "report_test.csv"
       # Exercises
-      response = file_name |> ReportsGenerator.build()|> ReportsGenerator.fetch_hight_cost("users")
+      response =
+        file_name |> ReportsGenerator.build() |> ReportsGenerator.fetch_hight_cost("users")
+
       # assertions
-      expected_response =  [:ok, {"5", 49}]
+      expected_response = [:ok, {"5", 49}]
 
       assert response == expected_response
     end
+
     test "when the option is 'foods' , returns the  the most consumed food " do
       # Setup
       file_name = "report_test.csv"
       # Exercises
-      response = file_name |> ReportsGenerator.build()|> ReportsGenerator.fetch_hight_cost("foods")
+      response =
+        file_name |> ReportsGenerator.build() |> ReportsGenerator.fetch_hight_cost("foods")
+
       # assertions
-      expected_response =   [:ok, {"esfirra", 3}]
+      expected_response = [:ok, {"esfirra", 3}]
 
       assert response == expected_response
     end
+
     test "when an invald option is give, returns error " do
       # Setup
       file_name = "report_test.csv"
       # Exercises
-      response = file_name |> ReportsGenerator.build()|> ReportsGenerator.fetch_hight_cost("banana")
+      response =
+        file_name |> ReportsGenerator.build() |> ReportsGenerator.fetch_hight_cost("banana")
+
       # assertions
       expected_response = [:error, "invalid option"]
 
